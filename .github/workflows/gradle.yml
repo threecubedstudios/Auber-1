@@ -25,7 +25,10 @@ jobs:
       
     - name: Build with Gradle
       run: ./gradlew desktop:dist
-      
+
+    - name: Test with JUnit
+      run: ./gradlew test
+
     - name: Upload release to artifact
       uses: actions/upload-artifact@v2
       with:

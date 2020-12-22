@@ -33,6 +33,17 @@ task dist(type: Jar) {
     with jar
 }
 
+dependencies {
+        testImplementation 'junit:junit:4.12'
+    }   
+
+test {
+        useJUnit()
+        testLogging.showStandardStreams = true
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
 
 dist.dependsOn classes
 

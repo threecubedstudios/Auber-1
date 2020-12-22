@@ -33,6 +33,10 @@ task dist(type: Jar) {
     with jar
 }
 
+dist.dependsOn classes
+
+eclipse.project.name = appName + "-desktop"
+
 dependencies {
         testImplementation 'junit:junit:4.12'
     }   
@@ -44,7 +48,3 @@ test {
             events "passed", "skipped", "failed"
         }
     }
-
-dist.dependsOn classes
-
-eclipse.project.name = appName + "-desktop"

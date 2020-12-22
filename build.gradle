@@ -69,16 +69,6 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-
-        testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.2'
-        testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.2'
-    }   
-
-    test {
-        useJUnitPlatform()
-        testLogging.showStandardStreams = true
-        testLogging {
-            events "passed", "skipped", "failed"
-        }
-    }
+    }  
+     
 }

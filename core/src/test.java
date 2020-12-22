@@ -4,6 +4,6 @@ public class test {
     
     @Test
     void aTest (){
-        System.out.println("TESTING 123")
+        System.out.println("TESTING 123");
     }
 }

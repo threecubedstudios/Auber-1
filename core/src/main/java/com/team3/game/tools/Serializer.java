@@ -9,6 +9,7 @@ import com.team3.game.characters.ai.Enemy;
 import com.team3.game.characters.ai.EnemyManager;
 import com.team3.game.characters.ai.Npc;
 import com.team3.game.characters.ai.NpcManager;
+import com.team3.game.characters.ai.Powerup;
 import com.team3.game.screen.Gameplay;
 import com.team3.game.sprites.StationSystem;
 
@@ -80,7 +81,11 @@ public final class Serializer {
         Gameplay.player.b2body.setTransform(
             playerPositionData.getFloat("x") + Gameplay.player.size.x,
             playerPositionData.getFloat("y") + Gameplay.player.size.y, 0);
-        Gameplay.player.arrestedCount = jsonData.get("player").getInt("arrested_count");
+        JsonValue playerData = jsonData.get("player");
+        Gameplay.player.arrestedCount = playerData.getInt("arrested_count");
+        Gameplay.player.powerupActive = playerData.getBoolean("powerup_active");
+        Gameplay.player.powerup = json.readValue(Powerup.Type.class, playerData.get("powerup"));
+
 
         for (JsonValue systemData : jsonData.get("systems")) {
           StationSystem system = Gameplay.systems.stream()
@@ -109,7 +114,6 @@ public final class Serializer {
           String targetSystemName = enemyData.getString("target_system");
           // Get the target system from the stored string
           if (!targetSystemName.equals("")) {
-            System.out.println(targetSystemName);
             StationSystem targetSystem = Gameplay.systems.stream()
                 .filter(currentSystem -> targetSystemName
                     .equals(currentSystem.getSystemName())).findFirst().get();

@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
+import com.team3.game.screen.Gameplay;
 import com.team3.game.sprites.StationSystem;
 
 /**
@@ -18,7 +19,7 @@ public class Enemy extends AiCharacter {
   public String mode;
   public Ability ability;
   public static int numberofInfiltrators;
-  public boolean usingAbility; 
+  public boolean usingAbility;
   /**
    * Enemy.
 
@@ -70,7 +71,7 @@ public class Enemy extends AiCharacter {
 
    * @param system The system to target
    */
-  public void set_target_system(StationSystem system) {
+  public void setTargetSystem(StationSystem system) {
     targetSystem = system;
   }
 
@@ -79,7 +80,7 @@ public class Enemy extends AiCharacter {
 
    * @return The targeted system
    */
-  public StationSystem get_target_system() {
+  public StationSystem getTargetSystem() {
     return targetSystem;
   }
 
@@ -89,25 +90,24 @@ public class Enemy extends AiCharacter {
    * @param system System object
    */
   public void sabotage(StationSystem system) {
-    if (system.hp > 0) {
-      system.hp -= 0.05;
-    } else {
+    system.hp -= Gameplay.SABOTAGE_RATE; 
+    if (system.hp < 0) {
       system.hp = 0;
-      system.set_sabotaged();
+      system.setSabotaged();
     }
   }
 
   /**
    * Set enemy to attacking mode.
    */
-  public void set_attackSystemMode() {
+  public void setAttackingSystemMode() {
     mode = "attacking_system";
   }
 
   /**
    * Set enemy to standby mode.
    */
-  public void set_standByMode() {
+  public void setStandbyMode() {
     mode = "";
   }
 
@@ -116,7 +116,7 @@ public class Enemy extends AiCharacter {
    *
    * @return True if it is in attacking mode
    */
-  public boolean is_attcking_mode() {
+  public boolean isAttackingMode() {
     return mode.equals("attacking_system");
   }
 
@@ -125,15 +125,16 @@ public class Enemy extends AiCharacter {
    *
    * @return True if it is in standby mode
    */
-  public boolean is_standBy_mode() {
+  public boolean isStandbyMode() {
     return mode.equals("");
   }
 
   /**
    * Set enemy to arrested.
    */
-  public void set_ArrestedMode() {
+  public void setArrestedMode() {
     mode = "arrested";
+    speed = 3000f;
   }
 
   /**
@@ -148,7 +149,13 @@ public class Enemy extends AiCharacter {
   @Override
   public void write(Json json) {
     super.write(json);
-    json.writeValue("target_system", targetSystem.getSystemName());
+    if (targetSystem != null) {
+      json.writeValue("target_system", targetSystem.getSystemName());
+    } else {
+      // If the Enemy has no target, its following the player (or arrested???)
+      json.writeValue("target_system", "");
+    }
+    json.writeValue("mode", mode);
   }
 
   @Override

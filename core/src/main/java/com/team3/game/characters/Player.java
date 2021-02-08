@@ -277,5 +277,7 @@ public class Player extends Character {
   public void write(Json json) {
     super.write(json);
     json.writeValue("arrested_count", arrestedCount);
+    json.writeValue("powerup", powerup);
+    json.writeValue("powerup_active", powerupActive);
   }
 }

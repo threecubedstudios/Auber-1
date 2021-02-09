@@ -1,7 +1,7 @@
 :root {
   --color-1: #F8F8F8;
   --color-2: #181328;
-  --color-3: #df213f;
+  --color-3: #E02944;
   --cubed-color: #040c22;
 }
 
@@ -185,6 +185,50 @@ footer img {
 #assessment-2 {
   width: 400px;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+#download-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#download-div a {
+  padding: 20px;
+  text-transform: uppercase;
+  font-family: 'Squada One', cursive;  
+  text-decoration: none;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--color-3);
+}
+
+#download-div a:hover {
+  background-color: var(--color-3);
+  color: var(--color-2);  
+}
+
+#download-div img {
+  height: 80px;
+  margin-right: 20px;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+#download-info p {
+  margin: 0;
+  text-align: left;
+}
+
+#auber-version {
+  font-size: 0.7em;
 }
 
 @media only screen and (max-width: 850px) {

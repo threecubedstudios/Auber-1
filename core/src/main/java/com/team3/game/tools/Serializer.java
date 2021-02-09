@@ -78,13 +78,20 @@ public final class Serializer {
         Gameplay.SABOTAGE_RATE = jsonData.getFloat("sabotage_rate");
 
         JsonValue playerPositionData = jsonData.get("player").get("position");
+
+        // There are 2 separate coordinate systems that need to be synced up for the game to
+        // function, one as part of box2d and one as part of the position Vector2
         Gameplay.player.b2body.setTransform(
             playerPositionData.getFloat("x") + Gameplay.player.size.x,
             playerPositionData.getFloat("y") + Gameplay.player.size.y, 0);
+        Gameplay.player.position.x = playerPositionData.getFloat("x");
+        Gameplay.player.position.y = playerPositionData.getFloat("y");
+
         JsonValue playerData = jsonData.get("player");
         Gameplay.player.arrestedCount = playerData.getInt("arrested_count");
         Gameplay.player.powerupActive = playerData.getBoolean("powerup_active");
         Gameplay.player.powerup = json.readValue(Powerup.Type.class, playerData.get("powerup"));
+        Gameplay.player.arrestPressed = playerData.getBoolean("arrest_pressed");
 
 
         for (JsonValue systemData : jsonData.get("systems")) {

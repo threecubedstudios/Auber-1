@@ -85,6 +85,7 @@ public class Player extends Character {
     b2body.applyLinearImpulse(input.scl(speedMultiplier), b2body.getWorldCenter(), true);
 
     if (Controller.isArrestPressed()) {
+      // arrestPressed should be true until an infiltrator reaches jail
       arrestPressed = true;
     }
 
@@ -279,5 +280,6 @@ public class Player extends Character {
     json.writeValue("arrested_count", arrestedCount);
     json.writeValue("powerup", powerup);
     json.writeValue("powerup_active", powerupActive);
+    json.writeValue("arrest_pressed", arrestPressed);
   }
 }

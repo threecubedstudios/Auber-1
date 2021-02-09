@@ -134,7 +134,7 @@ public class Enemy extends AiCharacter {
    */
   public void setArrestedMode() {
     mode = "arrested";
-    speed = 3000f;
+    speed = 1000f;
   }
 
   /**

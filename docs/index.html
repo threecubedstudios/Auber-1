@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css?v=3">
+        <link rel="stylesheet" type="text/css" href="style.css?v=4">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,27 @@
                     <p>The game features 3 difficulty modes: Easy, Medium &amp; Hard, as well as player abilities you can utilise during your mission. You are also able to save the game at any time, and continue whenever you wish.</p>
                 </div>
             </div>
-            <br>
+            <h2>Download</h2>
+            <div id="download-div">
+                <a target="_blank" href="https://github.com/threecubedstudios/auber-vega/releases/latest/download/auber.jar">
+                    <img src="dino.png">
+                    <div id="download-info">
+                        <p>Download Auber</p>
+                        <p id="auber-version">&nbsp;</p>
+                    </div>
+                </a>
+                <script>
+                    var versionRequest = new XMLHttpRequest()
+                    versionRequest.open("GET", "https://api.github.com/repos/threecubedstudios/auber-vega/releases/latest")
+                    versionRequest.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById('auber-version').innerHTML = JSON.parse(versionRequest.responseText)['name']
+                        }
+                    }
+                    versionRequest.send();
+                </script>
+            </div>
+            <h2>Trailer</h2>
             <div id="trailer-wrapper">
                 <video id="inline-trailer" src="trailer.mp4?v=1" preload="none" controls poster="poster.png"></video>
             </div>

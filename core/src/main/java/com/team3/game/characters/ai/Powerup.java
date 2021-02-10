@@ -11,7 +11,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 /**
- * Powerup object for the game.
+ * Powerup object for the game. This class meets requirement UR_POWERUPS.
  */
 public class Powerup {
   private static TextureAtlas atlas = new TextureAtlas("sprites/powerupSprites.atlas");
@@ -40,7 +40,7 @@ public class Powerup {
   public boolean hidden;
 
   /**
-   * Creates a powerup.
+   * Instantiates a powerup. Meets functional requirement FR_POWERUPS.
 
    * @param world The game world
    * @param x The initial x location of the powerup
@@ -55,6 +55,7 @@ public class Powerup {
     size = new Vector2(24, 24);
     createBody();
 
+    // Determines the type of powerup to create, depending on type variable.
     switch (type) {
       case SPEED:
         sprite = atlas.createSprite(textureNames[0]);
@@ -77,7 +78,7 @@ public class Powerup {
   }
 
   /**
-   * Creates the physics bodies for the powerup sprite.
+   * Creates the physics bodies for the powerup sprite. Helps meet requirement FR_PICKUPPOWERUP.
    */
   public void createBody() {
     BodyDef bdef = new BodyDef();
@@ -94,11 +95,16 @@ public class Powerup {
     b2body.createFixture(fdef).setUserData(this);
     shape.dispose();
 
+    // Enables collisions for the powerup.
     b2body.setUserData("POWERUP_" + this.type);
     b2body.getFixtureList().get(0).setSensor(true);
     b2body.getFixtureList().get(0).setUserData(this);
   }
 
+  /**
+   * Set the powerup as being picked up by the player.
+   * Helps meet requirement FR_PICKUPPOWERUP.
+   **/
   public void pickup() {
     hidden = true;
   }

@@ -65,7 +65,7 @@ public class SystemStatusMenu extends VerticalGroup {
   }
 
   /**
-   * Update the menu.
+   * Update the menu. Changes made here help meet requirement UR_UX.
    *
    * @param systems Arraylist of System objects
    */

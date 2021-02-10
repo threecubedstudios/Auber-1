@@ -98,7 +98,9 @@ public class Gameplay extends ScreenAdapter implements Serializable {
     EASY, MEDIUM, HARD
   }
 
-  /** The rate at which systems should be destroyed. */
+  /**
+   * The rate at which systems should be destroyed.
+   * Default value was lowered to make game easier. */
   public static float SABOTAGE_RATE = 0.05f;
 
   private final TmxMapLoader maploader;

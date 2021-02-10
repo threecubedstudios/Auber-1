@@ -41,7 +41,7 @@ public class Powerup {
 
   /**
    * Instantiates a powerup. Meets functional requirement FR_POWERUPS.
-
+   *
    * @param world The game world
    * @param x The initial x location of the powerup
    * @param y The initial y location of the powerup

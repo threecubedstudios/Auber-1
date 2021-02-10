@@ -185,7 +185,7 @@ public class Player extends Character {
 
   /**
    * Sets held powerup for the player. Helps to meet functional requirement FR_PICKUPPOWERUP.
-
+   *
    * @param type Set type of powerup that the player is holding.
    */
   public void setPowerup(Powerup.Type type) {

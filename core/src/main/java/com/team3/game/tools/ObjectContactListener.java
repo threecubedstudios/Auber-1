@@ -146,7 +146,7 @@ public class ObjectContactListener implements ContactListener {
       }
     }
 
-    // Powerup contact
+    // Enables collision between a Player and a Powerup. Helps meet requirement FR_PICKUPPOWERUP.
     if (is_Auber(fixA) || is_Auber(fixB)) {
       // If contact happened between auber and powerup but not sensor area.
       if (is_Auber(fixA) && is_Powerup(fixB)

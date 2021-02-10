@@ -89,7 +89,7 @@ public class Player extends Character {
       arrestPressed = true;
     }
 
-    // Powerup abilities
+    // Enable the correct powerup ability depending on which powerup is currently held.
     if (Controller.isPowerupAbilityPressed()) {
       if (powerup != null) {
         switch (powerup) {
@@ -117,6 +117,7 @@ public class Player extends Character {
       }
     }
 
+    // Arrest nearby enemy
     if (nearbyEnemy != null && arrestPressed) {
       arrest(nearbyEnemy);
     }
@@ -132,7 +133,7 @@ public class Player extends Character {
   }
 
   /**
-   * Activates the speed ability.
+   * Activates the speed ability. Helps to meet requirement UR_POWERUPS.
    */
   public void speedAbility() {
     powerupActive = true;
@@ -149,7 +150,7 @@ public class Player extends Character {
   }
 
   /**
-   * Activates the vision ability.
+   * Activates the vision ability. Helps to meet requirement UR_POWERUPS.
    */
   public void visionAbility() {
     powerupActive = true;
@@ -164,7 +165,7 @@ public class Player extends Character {
   }
 
   /**
-   * Toggles the repair ability being active.
+   * Toggles the repair ability being active. Helps to meet requirement UR_POWERUPS.
    *
    * @param condition The state to toggle the ability to.
    */
@@ -173,7 +174,7 @@ public class Player extends Character {
   }
 
   /**
-   * Toggles the arrest ability being active.
+   * Toggles the arrest ability being active. Helps to meet requirement UR_POWERUPS.
    *
    * @param condition The state to toggle the ability to.
    */
@@ -183,8 +184,8 @@ public class Player extends Character {
 
 
   /**
-   * Sets current held powerup for the player.
-
+   * Sets held powerup for the player. Helps to meet functional requirement FR_PICKUPPOWERUP.
+   *
    * @param type Set type of powerup that the player is holding.
    */
   public void setPowerup(Powerup.Type type) {
@@ -228,6 +229,11 @@ public class Player extends Character {
 
   }
 
+  /**
+   * Draw the player to the provided batch.
+   *
+   * @param batch The spritebatch to draw to
+   **/
   public void draw(SpriteBatch batch) {
     renderer.render(position, batch);
   }

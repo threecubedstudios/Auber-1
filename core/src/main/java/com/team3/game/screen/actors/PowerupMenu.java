@@ -10,6 +10,7 @@ import com.team3.game.characters.Player;
 
 /**
  * Adds a status menu of the player's powerups to the game.
+ * Meets requirement UR_POWERUPS.
  */
 public class PowerupMenu extends VerticalGroup {
 
@@ -20,7 +21,7 @@ public class PowerupMenu extends VerticalGroup {
   public Label visionLabel;
 
   /**
-   * Show status of powerups.
+   * Shows status of currently held powerups by the player.
    */
   public PowerupMenu() {
     super();

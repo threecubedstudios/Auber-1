@@ -14,7 +14,7 @@ public class HealthBar extends ProgressBar {
   public Label hpText;
 
   /**
-   * Healthbar to show the auber's health.
+   * Healthbar to show the auber's health. Adjustments help meet requirement UR_UX.
    */
   public HealthBar() {
     super(0, 100, .5f, false, new Skin(Gdx.files.internal("skin/hudskin/comic-ui.json")));

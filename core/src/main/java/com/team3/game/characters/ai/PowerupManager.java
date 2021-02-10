@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 /**
- * Manage powerups in the game.
+ * Manage powerups in the game. This class meets requirement UR_POWERUPS.
  */
 public class PowerupManager {
 
@@ -24,7 +24,7 @@ public class PowerupManager {
 
 
   /**
-   * Instantiates a new powerups Manager.
+   * Instantiates a new powerups manager.
 
    * @param world The game world
    * @param map The tiled map
@@ -36,7 +36,7 @@ public class PowerupManager {
   }
 
   /**
-   * Create powerups in box2D world.
+   * Create powerups in box2D world. Meets functional requirement FR_POWERUPS.
    */
   public void generatePowerups() {
     MapLayer powerupSpawn = map.getLayers().get("powerupSpawns");

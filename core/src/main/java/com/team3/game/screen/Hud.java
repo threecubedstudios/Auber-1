@@ -69,7 +69,7 @@ public class Hud {
     pauseMenu = new PauseMenu(settingsMenu, gameplay);
     // Create a SystemStatusMenu instance.
     systemStatusMenu = new SystemStatusMenu();
-    // Create a PowerupMenu instance
+    // Create a PowerupMenu instance. Helps implement requirement UR_POWERUPS.
     powerupMenu = new PowerupMenu();
     // Add teleport menu to the table
     table.add(teleportMenu).padLeft(20).width(Value.percentWidth(.2f, table));

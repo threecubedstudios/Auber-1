@@ -82,7 +82,7 @@ public class Gameplay extends ScreenAdapter implements Serializable {
   /** Handler for the teleporter menu. */
   public TeleportMenu teleportMenu;
 
-  /** Handler for the system status menu */
+  /** Handler for the system status menu. */
   public SystemStatusMenu systemStatusMenu;
 
   /** Handler for the powerup menu in the bottom right. */
@@ -118,7 +118,7 @@ public class Gameplay extends ScreenAdapter implements Serializable {
   /** Boolean representing as to whether the game is paused. */
   private boolean paused = false;
 
-  /** Controller that manages lights in the world */
+  /** Controller that manages lights in the world. */
   private final LightControl lightControl;
 
   /** Boolean as to whether the players view should be expanded. */

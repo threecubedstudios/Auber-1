@@ -58,8 +58,6 @@ public class MainMenu extends ScreenAdapter {
     stage = new Stage(viewport, batch);
 
     backgroundRenderer = new BackgroundRenderer(batch, viewport);
-
-
   }
 
   @Override
@@ -74,8 +72,7 @@ public class MainMenu extends ScreenAdapter {
 
     final GameMain game = (GameMain) Gdx.app.getApplicationListener();
 
-    // New Game Buttons (Three difficulties)
-
+    // New Game Buttons (Three difficulties). Meets requirement UR_GAME_MODES.
     TextButton newEasyButton = new TextButton("New Game (Easy)", skin);
     newEasyButton.addListener(new ClickListener() {
       @Override

@@ -43,58 +43,85 @@ import java.util.ArrayList;
  */
 public class Gameplay extends ScreenAdapter implements Serializable {
 
+  /** Pointer to the main application class, used to set the screen. */
   private final GameMain game;
 
+  /** An ArrayList containing all doors in the world. */
   public static ArrayList<Door> doors = new ArrayList<>();
 
+  /** An ArrayList containing all systems in the game world. */
   public static ArrayList<StationSystem> systems = new ArrayList<>();
 
+  /** A static reference to the player object. */
   public static Player player;
 
+  /** Manages the enemies in the game world. */
   public EnemyManager enemyManager;
 
+  /** Mnaages the NPCs in the game world. */
   public NpcManager npcManager;
 
+  /** Manages the Powerups in the game world. */
   public PowerupManager powerupManager;
 
+  /** The camera for the game world. */
   public OrthographicCamera camera;
 
+  /** The viewport to render the game world to. */
   public Viewport viewport;
 
+  /** Handles the player HUD/UI. */
   public Hud hud;
 
+  /** Handler for teleportation events. */
   public TeleportProcess teleportProcess;
 
+  /** Handler for the healthbar on the UI. */
   public HealthBar healthBar;
 
+  /** Handler for the teleporter menu. */
   public TeleportMenu teleportMenu;
 
+  /** Handler for the system status menu. */
   public SystemStatusMenu systemStatusMenu;
 
+  /** Handler for the powerup menu in the bottom right. */
   public PowerupMenu powerupStatusMenu;
 
+  /** Handlers for showing the amount of arrested infiltrators on the UI. */
   public ArrestedHeader arrestedHeader;
 
+  /**
+   * Enum containing the difficulty levels. Meets requirement UR_GAME_MODES.
+   **/
   public static enum Difficulty {
     EASY, MEDIUM, HARD
   }
 
+  /** The rate at which systems should be destroyed. */
   public static float SABOTAGE_RATE = 0.05f;
 
   private final TmxMapLoader maploader;
 
+  /** Container for the world map. */
   public final TiledMap map;
 
+  /** The renderer that renders the map. */
   private final OrthogonalTiledMapRenderer renderer;
 
+  /** The renderer that renders the background stars. */
   private final BackgroundRenderer backgroundRenderer;
 
+  /** The box2d world. */
   public final World world;
 
+  /** Boolean representing as to whether the game is paused. */
   private boolean paused = false;
 
+  /** Controller that manages lights in the world. */
   private final LightControl lightControl;
 
+  /** Boolean as to whether the players view should be expanded. */
   public boolean zoomedOut;
 
   /**
@@ -102,7 +129,7 @@ public class Gameplay extends ScreenAdapter implements Serializable {
    *
    * @param game The game object used in Libgdx
    * @param fromJson Json boolean value
-   * @param difficulty Sets difficulty of game
+   * @param difficulty Sets difficulty of game. Meets requirement UR_GAME_MODES.
    */
   public Gameplay(GameMain game, boolean fromJson, Difficulty difficulty) {
     this(game, new Vector2(640, 360), fromJson, difficulty);
@@ -114,10 +141,11 @@ public class Gameplay extends ScreenAdapter implements Serializable {
    * @param game       The game object used in Libgdx
    * @param screenSize Size of the rendered game screen, doesn't affect screen size
    * @param fromJson Json boolean value
-   * @param difficulty Sets difficulty of game
+   * @param difficulty Sets difficulty of game. Meets requirement UR_GAME_MODES.
    */
   public Gameplay(GameMain game, Vector2 screenSize, boolean fromJson, Difficulty difficulty) {
 
+    // Set the sabotage rate based off the chosen difficulty. Meets requirement UR_GAME_MODES.
     switch (difficulty) {
       case EASY:
         SABOTAGE_RATE = 0.05f;
@@ -356,6 +384,11 @@ public class Gameplay extends ScreenAdapter implements Serializable {
     }
   }
 
+  /**
+   * Override write method for serializing the class. Meets requirement UR_SAVELOADGAME
+   *
+   * @param json The json object used to write the data.
+   **/
   @Override
   public void write(Json json) {
     json.writeValue("systems", systems);
@@ -365,10 +398,9 @@ public class Gameplay extends ScreenAdapter implements Serializable {
     json.writeValue("sabotage_rate", SABOTAGE_RATE);
   }
 
-  /**
-   * This is blank for a reason. For the JSON read method of Gameplay see
-   * the from file method from Serializer.java.
-   */
   @Override
-  public void read(Json json, JsonValue jsonMap) {}
+  public void read(Json json, JsonValue jsonMap) {
+    // Blank as LibGDX requires a blank constructor for this method to work. This is instead
+    // handled within the Serializer.java file. Meets requirement UR_SAVELOADGAME.
+  }
 }

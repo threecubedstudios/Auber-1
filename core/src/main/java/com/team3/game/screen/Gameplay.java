@@ -356,6 +356,11 @@ public class Gameplay extends ScreenAdapter implements Serializable {
     }
   }
 
+  /**
+   * Override write method for serializing the class. Meets requirement UR_SAVELOADGAME
+   *
+   * @param json The json object used to write the data.
+   **/
   @Override
   public void write(Json json) {
     json.writeValue("systems", systems);
@@ -365,10 +370,9 @@ public class Gameplay extends ScreenAdapter implements Serializable {
     json.writeValue("sabotage_rate", SABOTAGE_RATE);
   }
 
-  /**
-   * This is blank for a reason. For the JSON read method of Gameplay see
-   * the from file method from Serializer.java.
-   */
   @Override
-  public void read(Json json, JsonValue jsonMap) {}
+  public void read(Json json, JsonValue jsonMap) {
+    // Blank as LibGDX requires a blank constructor for this method to work. This is instead
+    // handled within the Serializer.java file. Meets requirement UR_SAVELOADGAME.
+  }
 }

@@ -15,7 +15,7 @@ import com.team3.game.sprites.StationSystem;
 
 
 /**
- * Utility class that handles JSON serialization.
+ * Utility class that handles JSON serialization. Meets requirement UR_SAVELOADGAME.
  **/
 public final class Serializer {
   /**

@@ -240,6 +240,11 @@ public class EnemyManager implements Serializable {
     enemy.targetSystem = null;
   }
 
+  /**
+   * Override write method for serializing the class. Meets requirement UR_SAVELOADGAME
+   *
+   * @param json The json object used to write the data.
+   **/
   @Override
   public void write(Json json) {
     json.writeValue("enemies", enemies);
@@ -247,5 +252,7 @@ public class EnemyManager implements Serializable {
 
   @Override
   public void read(Json json, JsonValue jsonData) {
+    // Blank as LibGDX requires a blank constructor for this method to work. This is instead
+    // handled within the Serializer.java file. Meets requirement UR_SAVELOADGAME.
   }
 }

@@ -76,6 +76,11 @@ public abstract class Character implements Serializable {
     renderer.render(position, batch);
   }
 
+  /**
+   * Override write method for serializing the class. Meets requirement UR_SAVELOADGAME
+   *
+   * @param json The json object used to write the data.
+   **/
   @Override
   public void write(Json json) {
     json.writeValue("speed", speed);
@@ -84,5 +89,8 @@ public abstract class Character implements Serializable {
   }
 
   @Override
-  public void read(Json json, JsonValue jsonData) { }
+  public void read(Json json, JsonValue jsonData) {
+    // Blank as LibGDX requires a blank constructor for this method to work. This is instead
+    // handled within the Serializer.java file. Meets requirement UR_SAVELOADGAME.
+  }
 }
